@@ -1,5 +1,5 @@
 html {
-    background-color: rgb(24, 27, 27);
+    background-color: rgb(25, 27, 27);
 }
 
 body {
@@ -14,26 +14,28 @@ h1 {
     font-family: Monospace;
     letter-spacing: 0.5em;
     font-size: 3em;
-    text-shadow: -.5em .5em .2em silver;
+    text-shadow: -.6em .4em .2em rgb(193, 229, 193);
 }
 
 ol {
     list-style-type: none;
 }
 
+
 li {
+    display: none;
     color: white;
     font-family: Monospace;
     font-size: 2.2em;
-    line-height: 4.2em;
     text-align: center;
-    display: none;
 }
+
 
 li.active {
     display: flex;
     flex-direction: column;
 }
+
 
 #correct {
     color: limegreen;
@@ -42,20 +44,39 @@ li.active {
     font-weight: 1000;
     font-variant: small-caps;
     font-family: Monospace;
-    line-height: 3.08em;
+    line-height: 3.67em;
+    text-shadow: .05em .05em 1em white;
 }
 
 #focused {
     font-size: 3em;
-    font-family: cursive;
+    font-family: Arial;
+    line-height: 2.4em;
 }
 
 #textBox {
-    margin: 5rem 0 5rem 2.5rem;
+    margin: 2rem 0 2rem 2.5rem;
     height: 5rem;
     width: 15rem;
     font-size: 2.4em;
     text-align: center;
     padding: 0;
-    font-family: cursive;
+    font-family: Arial;
+}
+
+#footBoxes {
+    margin: 7rem 0 0;
+}
+
+
+.footBox {
+    display: inline;
+    border: 1px solid white;
+    padding: 0 0.5em;
+    margin: 1rem;
+}
+
+
+.footBoxCorrect {
+    background-color: green;
 }
