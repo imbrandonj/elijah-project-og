@@ -14,7 +14,10 @@
 
     <div id="problems">
     <ol>
+        <!-- Display "Correct!" or "Try again." based on answer input -->
         <li id="correct">Correct!</li>
+
+        <!-- Problem set 1. Uppercase letters -->
         <li id="Q">Enter the uppercase letter:<br><span id="focused">Q</span></li>
         <li id="W">Enter the uppercase letter:<br><span id="focused">W</span></li>
         <li id="E">Enter the uppercase letter:<br><span id="focused">E</span></li>
@@ -42,6 +45,7 @@
         <li id="N">Enter the uppercase letter:<br><span id="focused">N</span></li>
         <li id="M">Enter the uppercase letter:<br><span id="focused">M</span></li>
 
+        <!-- Problem set 2. Lowercase letters -->
         <li id="q">Enter the lowercase letter:<br><span id="focused">q</span></li>
         <li id="w">Enter the lowercase letter:<br><span id="focused">w</span></li>
         <li id="e">Enter the lowercase letter:<br><span id="focused">e</span></li>
@@ -68,11 +72,22 @@
         <li id="b">Enter the lowercase letter:<br><span id="focused">b</span></li>
         <li id="n">Enter the lowercase letter:<br><span id="focused">n</span></li>
         <li id="m">Enter the lowercase letter:<br><span id="focused">m</span></li>
+
+        <!-- Problem set 3. Counting -->
+        <li id="L2">Count and add:<br><span id="focused">🦁 + 🦁</span></li>
+        <li id="L4">Count and add:<br><span id="focused">🦁🦁 + 🦁🦁</span></li>
+        <li id="L8">Count and add:<br><span id="focused">🦁🦁🦁🦁 + 🦁🦁🦁🦁</span></li>
+        <li id="B3">Count and add:<br><span id="focused">🐻 + 🐻🐻</span></li>
+        <li id="B5">Count and add:<br><span id="focused">🐻🐻 + 🐻🐻🐻</span></li>
+        <li id="B7">Count and add:<br><span id="focused">🐻🐻🐻🐻🐻 + 🐻🐻</span></li>
+        <li id="B9">Count and add:<br><span id="focused">🐻🐻🐻🐻🐻 + 🐻🐻🐻🐻</span></li>
     </ol>
     </div>
     
+    <!-- Textbox for answer input -->
     <input type="text" id="textBox" value="" />
 
+    <!-- Boxes to keep track of correct answers and how many left in problem set -->
     <ol id = "footBoxes">
         <li class = "footBox" id = "box1" > </li>
         <li class = "footBox" id = "box2" > </li>
