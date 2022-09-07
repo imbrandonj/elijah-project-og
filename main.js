@@ -1,48 +1,62 @@
-const capAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-const lowerAlpha = "abcdefghijklmnopqrstuvwxyz";
-const countEmoji = ["L2", "L4", "L8", "B3", "B5", "B7", "B9"]
+// global constants used as problem IDs and answers
+const capAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";  // problem set 1
+const lowerAlpha = "abcdefghijklmnopqrstuvwxyz";  // problem set 2
+const countEmoji = ["L2", "L4", "L8", "B3", "B5", "B7", "B9"];  // problem set 3
 
-let answer;  // global declaration
-let problemID;  // global declaration
-let problemSelect;  // global declaration
-let totalCorrect = 0;  // global declaration for total correct answers tally
-let set2 = 0; // global declaration for correct tally of problem set 2
-let set3 = 0; // globabl declaration for correct tally of problem set 3
+// global variables to be used between functions
+let answer;  // user answer
+let problemID;  // problem selection from HTML
+let problemSelect;  // select a new problem per iteration
+let totalCorrect = 0;  // total correct answers tally
+let set2 = 0; // correct tally of problem set 2
+let set3 = 0; // correct tally of problem set 3
+let set4 = 0;  // correct tally of problem set 4
+
 loadProblem();  // sets first problem on page load
 
+// functions and events:
 
 function loadProblem() {
     let previousProblem = problemSelect;  // Prevents an immediate duplicate
 
-    // Select problem type (alpha letters or lowercase letters)
-    while ( previousProblem === problemSelect ) {
-        if ( totalCorrect < 20 ) {
+    // Select problem type (alpha letters, lowercase letters, or counting)
+    while ( previousProblem === problemSelect ) {  // this loop prevents a duplicate
+
+        if ( totalCorrect < 20 )
             // problem set 1 using capAlpha var
             problemSelect = capAlpha.charAt(Math.floor(Math.random() * capAlpha.length));  // selects random alpha char
-        } else if ( totalCorrect < 40 ) {
+
+        else if ( totalCorrect < 40 ) 
             // problem set 2 using lowerAlpha var
             problemSelect = lowerAlpha.charAt(Math.floor(Math.random() * lowerAlpha.length));  // selects random lower char
-        } else {
+
+        else if ( totalCorrect < 60 ) 
             // problem set 3 using countEmoji array
             problemSelect = countEmoji[Math.floor(Math.random() * countEmoji.length)];  // selects random count emoji
-        }
+
+        else 
+            // problem set 4 using numbers
+            problemSelect = String(Math.floor(Math.random() * ( 11 - 2 ) + 2));  // selects random string number between 2 and 10
     };
 
     problemID = document.getElementById(problemSelect);  // alpha char matches html/css ID
     problemID.classList.add("active");  // presents the problem via css class display: flex
 
-    if ( totalCorrect < 40 )
-        answer = problemSelect;  // for the first 2 problem sets the answer is problemSelect
+    // get answer
+    if ( totalCorrect < 40  || totalCorrect >= 60 )
+        // for problem sets 1, 2, and 4 the answer is problemSelect
+        answer = problemSelect;  
     else
-        answer = problemSelect[1];  // for the latter, the answer is the second char in problemSelect (ex: "L4" - 4 is the answer)
+        // for problem set 3 the answer is the second char in problemSelect (ex: "L4" - 4 is the answer)
+        answer = problemSelect[1];  
 };
 
 
 // textBox event
-let textBox = document.getElementById("textBox"); 
-textBox.addEventListener("keydown", function (e) {
-    if ( e.key === "Enter" ) {
-        let text = e.target.value;
+const TEXTBOX = document.getElementById("textBox"); 
+TEXTBOX.addEventListener("keydown", function (event) {
+    if ( event.key === "Enter" ) {
+        let text = event.target.value;
         checkAnswer(text, answer);
     }
 });
@@ -54,8 +68,9 @@ function checkAnswer(text, answer) {
         totalCorrect += 1;
         transition();
         setTimeout(loadProblem, 500);  // 500ms must match setTimeout() in transition() function
+
     } else {
-        alert("Try again.")
+        TEXTBOX.value = "";
     }
 };
 
@@ -63,7 +78,7 @@ function checkAnswer(text, answer) {
 // removes correct problem, shows a "Correct!" message for 500ms, presents a new problem
 function transition() {
     problemID.classList.remove("active");
-    textBox.value = "";
+    TEXTBOX.value = "";
 
     footboxGreen();  // paints a footbox green after a correct answer
 
@@ -88,7 +103,7 @@ function footboxGreen() {
         let footBox = document.getElementById("box" + totalCorrect);
         footBox.classList.add("footBoxCorrect");
 
-    } else if ( totalCorrect === 20 || totalCorrect === 40 ) {
+    } else if ( totalCorrect === 20 || totalCorrect === 40 || totalCorrect === 60 ) {
         // Reset tally for next problem set @ 20, 40, 60, etc.
         for ( let i = 1; i <= 20; i++ ) {
             let footBox = document.getElementById("box" + i);
@@ -100,10 +115,17 @@ function footboxGreen() {
         set2 += 1;
         let footBox = document.getElementById("box" + set2);
         footBox.classList.add("footBoxCorrect");
-    } else {
+        
+    } else if ( totalCorrect < 60 ) {
         // Tally for problem set 3
         set3 += 1;
         let footBox = document.getElementById("box" + set3);
+        footBox.classList.add("footBoxCorrect");
+
+    } else {
+        // Tally for problem set 4
+        set4 += 1;
+        let footBox = document.getElementById("box" + set4);
         footBox.classList.add("footBoxCorrect");
     }
 };
