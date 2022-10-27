@@ -25,7 +25,7 @@ ol {
 li {
     display: none;
     color: white;
-    font-family: Monospace;
+    font-family: system-ui;
     font-size: 2.2em;
     text-align: center;
 }
@@ -39,19 +39,23 @@ li.active {
 
 #correct {
     color: limegreen;
-    font-size: 6em;
+    font-size: 6.23em;
     font-style: italic;
     font-weight: 1000;
     font-variant: small-caps;
     font-family: Monospace;
-    line-height: 3.67em;
+    line-height: 3.7em;
     text-shadow: .05em .05em 1em white;
 }
 
 #focused {
     font-size: 3em;
-    font-family: Arial;
+    font-family: system-ui;
     line-height: 2.4em;
+}
+
+#I>#focused {
+    font-family: Times;
 }
 
 #textBox {
@@ -61,13 +65,12 @@ li.active {
     font-size: 2.4em;
     text-align: center;
     padding: 0;
-    font-family: Arial;
+    font-family: system-ui;
 }
 
 #footBoxes {
     margin: 7rem 0 0;
 }
-
 
 .footBox {
     display: inline;
