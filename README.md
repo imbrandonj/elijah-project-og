@@ -1,6 +1,6 @@
 # elijah-project
 
-https://imbrandonj.github.io/elijah_project.html
+https://imbrandonj.github.io/elijah_project/index.html
  
 
 This is an educational website that I created for my, then, 3 year old son Elijah. 
