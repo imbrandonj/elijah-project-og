@@ -116,7 +116,7 @@ function footboxGreen() {
         let footBox = document.getElementById("box" + totalCorrect);
         footBox.classList.add("footBoxCorrect");
 
-    } else if ( totalCorrect === 20 || totalCorrect === 40 || totalCorrect === 60 ) {
+    } else if ( totalCorrect === 20 || totalCorrect === 40 || totalCorrect === 60 || totalCorrect === 80 ) {
         // Reset tally for next problem set @ 20, 40, 60, etc.
         for ( let i = 1; i <= 20; i++ ) {
             let footBox = document.getElementById("box" + i);
